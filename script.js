@@ -94,6 +94,7 @@ function init() {
     ];
     new QuoteRotator(quoteElement, quotes);
 
+<<<<<<< HEAD
     // Initialize skill card animations
     const observerOptions = {
         root: null,
@@ -108,11 +109,58 @@ function init() {
                 entry.target.style.setProperty('--delay', delay);
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target); // Only animate once
+=======
+    // Initialize scroll animations for skills section
+    initScrollAnimations();
+}
+
+// Scroll Animation System
+function initScrollAnimations() {
+    const skillCards = document.querySelectorAll('.skill-card');
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+                // Add staggered delay based on card position within its group
+                const delay = (index % 3) * 150; // Stagger within each group
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, delay);
+                
+                // Only animate once
+                observer.unobserve(entry.target);
+>>>>>>> 60b24ebaa115a09743a2ffc2a9d33a4f3be13633
             }
         });
     }, observerOptions);
 
     // Observe all skill cards
+<<<<<<< HEAD
     const skillCards = document.querySelectorAll('.skill-card');
     skillCards.forEach(card => observer.observe(card));
+=======
+    skillCards.forEach(card => {
+        observer.observe(card);
+    });
+
+    // Also animate other elements in skills section
+    const skillsElements = document.querySelectorAll('.skills-section *');
+    skillsElements.forEach((element, index) => {
+        const elementObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = `${index * 0.1}s`;
+                    entry.target.classList.add('animate-in');
+                    elementObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        elementObserver.observe(element);
+    });
+>>>>>>> 60b24ebaa115a09743a2ffc2a9d33a4f3be13633
 }
