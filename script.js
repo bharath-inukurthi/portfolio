@@ -93,4 +93,26 @@ function init() {
         '"Learning never exhausts the mind." - Leonardo da Vinci'
     ];
     new QuoteRotator(quoteElement, quotes);
+
+    // Initialize skill card animations
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const delay = entry.target.getAttribute('data-delay') || 0;
+                entry.target.style.setProperty('--delay', delay);
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, observerOptions);
+
+    // Observe all skill cards
+    const skillCards = document.querySelectorAll('.skill-card');
+    skillCards.forEach(card => observer.observe(card));
 }
