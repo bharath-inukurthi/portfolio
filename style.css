@@ -96,6 +96,122 @@ header {
 }
 
 /* Wave Divider */
+/* Skills Section */
+#skills {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 2rem;
+    background-color: #f8f9fa;
+    position: relative;
+}
+
+#skills h2 {
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: #333;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.2);
+}
+
+.skill-card i {
+    font-size: 4rem;
+    transition: filter 0.3s ease;
+}
+
+.skill-card:hover i {
+    filter: drop-shadow(0 0 8px rgba(0, 123, 255, 0.4));
+}
+
+.skill-card span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Ticker */
+.ticker-container {
+    width: 100%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticker {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.ticker-content {
+    display: inline-block;
+    animation: ticker 15s linear infinite;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    padding-right: 2rem;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #skills h2 {
+        font-size: 2rem;
+    }
+    
+    .skill-card i {
+        font-size: 3rem;
+    }
+}
+
 .wave-divider {
     position: absolute;
     bottom: 0;
