@@ -94,22 +94,6 @@ function init() {
     ];
     new QuoteRotator(quoteElement, quotes);
 
-<<<<<<< HEAD
-    // Initialize skill card animations
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const delay = entry.target.getAttribute('data-delay') || 0;
-                entry.target.style.setProperty('--delay', delay);
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Only animate once
-=======
     // Initialize scroll animations for skills section
     initScrollAnimations();
 }
@@ -133,16 +117,11 @@ function initScrollAnimations() {
                 
                 // Only animate once
                 observer.unobserve(entry.target);
->>>>>>> 60b24ebaa115a09743a2ffc2a9d33a4f3be13633
             }
         });
     }, observerOptions);
 
     // Observe all skill cards
-<<<<<<< HEAD
-    const skillCards = document.querySelectorAll('.skill-card');
-    skillCards.forEach(card => observer.observe(card));
-=======
     skillCards.forEach(card => {
         observer.observe(card);
     });
@@ -162,5 +141,4 @@ function initScrollAnimations() {
         
         elementObserver.observe(element);
     });
->>>>>>> 60b24ebaa115a09743a2ffc2a9d33a4f3be13633
 }
